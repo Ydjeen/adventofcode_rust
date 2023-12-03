@@ -1,4 +1,6 @@
-use crate::days::day0::execute;
+pub mod days;
+
+pub mod utils;
 fn main() {
-    execute();
+    days::day1::task1();
 }

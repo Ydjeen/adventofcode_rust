@@ -20,10 +20,13 @@
                 }
             },
             "args": [],
-            "cwd": "${workspaceFolder}"
+            "cwd": "${workspaceFolder}",
+            "presentation": {
+                "clear": true
+            }
         },
         {
-            "type": "lldb",
+            "type": "lldb", 
             "request": "launch",
             "name": "Debug unit tests in executable 'advent_of_code'",
             "cargo": {
@@ -39,7 +42,10 @@
                 }
             },
             "args": [],
-            "cwd": "${workspaceFolder}"
+            "cwd": "${workspaceFolder}",
+            "presentation": {
+                "clear": true
+            }
         }
     ]
 }

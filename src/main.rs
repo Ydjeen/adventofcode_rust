@@ -1,7 +1,7 @@
-pub mod days;
 
-pub mod utils;
+use crate::advent2024::month::process_month;
+
+mod advent2024;
 fn main() {
-    days::day1::task1();
-    days::day1::task2();
+    process_month();
 }

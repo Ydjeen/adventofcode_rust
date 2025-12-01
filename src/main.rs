@@ -1,7 +1,7 @@
 
-use crate::advent2024::month::process_month;
+use crate::advent2025::month::process_month;
 
-mod advent2024;
+mod advent2025;
 fn main() {
     process_month();
 }

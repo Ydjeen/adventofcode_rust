@@ -3,5 +3,5 @@ use crate::advent2024::days::*;
 pub fn process_month() {
     let advent_str = String::from("Advent 2024:");
     println!("{}", advent_str);
-    day4::process();
+    day5::process();
 }

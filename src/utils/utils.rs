@@ -8,7 +8,7 @@ pub fn read_file_string(file_path:&String)->String{
 pub fn read_file_lines(file_path:&String)->Vec<String>{
     let lines:Vec<String> = fs::read_to_string(file_path).expect(&format!("File {} not found.", file_path))
     .split("\n")
-    .map(|line| line.to_string())
+    .map(|line| line.trim().to_string())
     .collect();
     return lines;
 }
@@ -22,6 +22,11 @@ pub fn get_int_tuple_from_line(line: &str) -> (i32, i32){
 
 pub fn get_int_array_from_line(line: &str) -> Vec<i32>{
     let line_iterator = line.split_whitespace().map(|x|x.parse::<i32>().unwrap()).collect();
+    return line_iterator
+}
+
+pub fn get_int_array_from_line_with_comas(line: &str) -> Vec<i32>{
+    let line_iterator = line.split(',').map(|x|x.parse::<i32>().unwrap()).collect();
     return line_iterator
 }
 
@@ -56,5 +61,14 @@ pub fn find_smallest_pair(input_vec: &Vec<(i32, i32)>, min_value_tuple: (i32, i3
     }
     else {
         return min_value_tuple;
+    }
+}
+
+fn trim_newline(s: &mut String) {
+    if s.ends_with('\n') {
+        s.pop();
+        if s.ends_with('\r') {
+            s.pop();
+        }
     }
 }

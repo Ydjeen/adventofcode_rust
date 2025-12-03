@@ -29,8 +29,13 @@ pub fn get_int_tuple_from_line(line: &str, splitter: &str) -> (i64, i64){
 }
 
 pub fn get_int_array_from_line(line: &str) -> Vec<i32>{
-    let line_iterator = line.split_whitespace().map(|x|x.parse::<i32>().unwrap()).collect();
-    return line_iterator
+    let line_vector = line.split_whitespace().map(|x|x.parse::<i32>().unwrap()).collect();
+    return line_vector
+}
+
+pub fn get_digit_array_from_line(line: &String) -> Vec<i32>{
+    let line_vector = line.chars().filter(|x| x.is_digit(10)).map(|x|i32::try_from(x.to_digit(10).unwrap()).unwrap()).collect();
+    return line_vector
 }
 
 pub fn get_int_array_from_line_with_comas(line: &str) -> Vec<i32>{
@@ -43,6 +48,18 @@ pub fn get_str_array_from_line_with_comas(line: &str) -> Vec<&str>{
     return line_iterator
 }
 
+pub fn trim_newline(s: &mut String) {
+    if s.ends_with('\n') {
+        s.pop();
+        if s.ends_with('\r') {
+            s.pop();
+        }
+    }
+}
+
+pub fn count_digits(i: u64) -> u32{
+    return i.checked_ilog10().unwrap_or(0) + 1;
+}
 
 pub fn find_smallest_pair(input_vec: &Vec<(i32, i32)>, min_value_tuple: (i32, i32))->(i32, i32){
     //let mut left_found = std::i32::MAX;
@@ -75,14 +92,5 @@ pub fn find_smallest_pair(input_vec: &Vec<(i32, i32)>, min_value_tuple: (i32, i3
     }
     else {
         return min_value_tuple;
-    }
-}
-
-fn trim_newline(s: &mut String) {
-    if s.ends_with('\n') {
-        s.pop();
-        if s.ends_with('\r') {
-            s.pop();
-        }
     }
 }
